@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>LINGUASPACE</h1>
+    <p>Write anywhere, from your devices</p>
+
+    <!-- === Conditional Buttons based on Login === -->
+    <div class="hero-buttons">
+      {% if user %}
+        <span style="margin-right:10px;">Welcome, {{ user.email }}</span>
+        <a href="{{ url_for('logout') }}" class="btn red">Logout</a>
+        <a href="{{ url_for('new_post') }}" class="btn green">Buat Post</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="btn blue">Login</a>
+        <a href="{{ url_for('register') }}" class="btn white">Register</a>
+      {% endif %}
+    </div>
+
+    <a href="#next" class="scroll-down">⬇</a>
+  </div>
+</section>
+
+<section id="next" class="info-section">
+  <h2>About LinguaSpace</h2>
+  <p>Creative Writing & Publication Hub for aspiring authors and language lovers.</p>
+</section>
+
+<!-- === Latest Posts Section === -->
+<section class="posts-section">
+  <h2>Latest Posts</h2>
+  {% if posts %}
+    <ul class="post-list">
+      {% for post in posts %}
+        <li class="post-item">
+          <a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a>
+          <span class="meta">
+            • by {{ post.author_id and post.author_id or 'Anonymous' }} 
+            • {{ post.created_at.strftime('%Y-%m-%d') }}
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No posts yet. {% if user %}Start by <a href="{{ url_for('new_post') }}">creating one</a>.{% endif %}</p>
+  {% endif %}
+</section>
+{% endblock %}

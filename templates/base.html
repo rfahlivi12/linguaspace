@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinguaSpace</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='img/logo.png') }}">
+</head>
+
+<body>
+  <!-- === NAVBAR === -->
+  <header class="navbar">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='img/logo.png') }}" alt="LinguaSpace Logo">
+      <span class="logo-text">LinguaSpace</span>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="{{ url_for('home') }}" class="active">Home</a>
+      <a href="#">Info</a>
+      <a href="#">Membership</a>
+      <a href="#">Alerts 🔔</a>
+    </nav>
+    <div class="burger" onclick="toggleMenu()">☰</div>
+  </header>
+
+  <!-- === MAIN CONTENT === -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- === FOOTER === -->
+  <footer>
+    <p>© 2025 LinguaSpace • Built on Flask + Termux</p>
+  </footer>
+
+  <!-- === SCRIPTS === -->
+  <script>
+    // Responsive navbar toggle
+    function toggleMenu() {
+      document.getElementById('navLinks').classList.toggle('open');
+    }
+
+    // Navbar fade-in effect
+    document.addEventListener("DOMContentLoaded", () => {
+      const navbar = document.querySelector(".navbar");
+      navbar.style.opacity = 0;
+      setTimeout(() => {
+        navbar.style.transition = "opacity 0.8s ease";
+        navbar.style.opacity = 1;
+      }, 200);
+    });
+  </script>
+</body>
+</html>

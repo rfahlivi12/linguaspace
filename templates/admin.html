@@ -1,0 +1,26 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.email }} (Admin)</h1>
+
+    <h2>All Users</h2>
+    <ul>
+        {% for u in users %}
+            <li>{{ u.id }} - {{ u.email }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Posts</h2>
+    <ul>
+        {% for p in posts %}
+            <li>{{ p.id }} - {{ p.title }} by {{ p.author_id }}</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('home') }}">Back to Home</a>
+</body>
+</html>

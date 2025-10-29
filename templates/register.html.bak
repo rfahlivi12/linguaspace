@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="auth-section">
+  <div class="auth-overlay"></div>
+  <div class="auth-container">
+    <h2>Daftar</h2>
+    <form method="POST">
+      <input type="text" name="username" placeholder="Pilih username" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit" class="btn white">Daftar</button>
+    </form>
+    <p>Sudah punya akun? <a href="{{ url_for('login') }}">Login di sini</a></p>
+  </div>
+</section>
+{% endblock %}

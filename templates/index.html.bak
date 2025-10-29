@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>LINGUASPACE</h1>
+    <p>Write anywhere, from your devices</p>
+    <div class="hero-buttons">
+      <a href="{{ url_for('login') }}" class="btn blue">Login</a>
+      <a href="{{ url_for('register') }}" class="btn white">Register</a>
+    </div>
+    <a href="#next" class="scroll-down">⬇</a>
+  </div>
+</section>
+
+<section id="next" class="info-section">
+  <h2>About LinguaSpace</h2>
+  <p>Creative Writing & Publication Hub for aspiring authors and language lovers.</p>
+</section>
+{% endblock %}
